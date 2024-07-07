@@ -5,10 +5,12 @@
 
 #define sb_vol_up 0x20, 0x42
 #define sb_vol_down 0x20, 0x43
+#define sb_mute 0x20, 0x1B
 
 #define tv_Address 0x7
 #define tv_vol_up 0x7
 #define tv_vol_down 0xB
+#define tv_mute 0xF
 
 
 
@@ -36,6 +38,8 @@ void loop() {
             SendIR(sb_vol_up);
         } else if (IrReceiver.decodedIRData.command == tv_vol_down) {
             SendIR(sb_vol_down);
+        } else if (IrReceiver.decodedIRData.command == tv_mute) {
+            SendIR(sb_mute);
         }
     }
   }
